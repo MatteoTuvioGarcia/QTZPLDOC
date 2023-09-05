@@ -1,7 +1,18 @@
-// head = document.getElementById("mainhead")
-// head.addEventListener("click", clkhandler, false)
-
-// function clkhandler(evt){
-//     handler = document.getElementById(evt.currentTarget.id)
-//      handler.innerText = 'STOP CLICKING ME'
-// }
+$(document).ready(function () {
+         
+    $('#sidebarCollapse').on('click', function () {
+    $('#sidebar').toggleClass('active');
+    btn = document.getElementById("sidebarCollapse")
+        console.log(btn.innerText)
+    if(btn.innerText == "<--"){
+        btn.innerText = '-->'
+    }else{
+        btn.innerText = '<--'
+    }
+    });
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "htmlsnippets/singletons/main.html", false);
+    xmlhttp.send();
+    document.getElementById('mainpage').innerHTML = xmlhttp.responseText;
+    });
+   
