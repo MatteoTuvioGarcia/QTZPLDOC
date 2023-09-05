@@ -12,6 +12,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
   </head>
   <body>
+    <script type="text/javascript">
+            function loadPage(href)
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", href, false);
+                xmlhttp.send();
+                return xmlhttp.responseText;
+            }
+        </script>
     <div class="wrapper">
       <!-- Sidebar -->
       <nav id="sidebar">
@@ -25,7 +34,8 @@
                   <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
                   <ul class="collapse list-unstyled" id="homeSubmenu">
                       <li>
-                          <a href="#">Home 1</a>
+                          <a href="#" onClick="document.getElementById('mainPage').innerHTML = 
+                      loadPage('hello-world.html');">Home 1</a>
                       </li>
                       <li>
                           <a href="#">Home 2</a>
@@ -72,6 +82,10 @@
             </div>
         </nav>
     </div>
+  </div>
+
+  <div id="mainpage">
+
   </div>
   <script src="ressources/script/index.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
