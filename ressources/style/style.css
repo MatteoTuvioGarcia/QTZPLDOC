@@ -106,5 +106,26 @@ ul ul a {
 .card_custom {
 
     margin: 0.5rem .5rem 2rem !important;
+
+}
+.card_custom_inside {
+
+    padding-bottom: 1%;
+
 }
 
+.zplcode {
+
+    border:2px solid #8f8f8f;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.zplcode p{
+
+    line-height: 1.1;
+    color: black;
+    font-family: Consolas, serif;
+    margin-left: 1em;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}

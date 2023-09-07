@@ -13,5 +13,28 @@ function loadPage(href) {
     xmlhttp.open("GET", href, false);
     xmlhttp.send();
     document.getElementById('mainpage').innerHTML = xmlhttp.responseText;
-    document.getElementById("clickme").addEventListener("click", fctClicked, false)
+
+    clickme = document.getElementById("clickme")
+    console.log(clickme)
+    if (clickme != null) {
+        console.log('Aded')
+        clickme.addEventListener("click", fctClicked, false)
+    }
+    elements = document.getElementsByClassName("zplsourcefile");
+
+    if (elements != null || elements.length != 0) {
+        for (var i = 0; i < elements.length; i++)
+        {
+            loadZplElement(elements[i])
+        }
+    }
+}
+function loadZplElement(element) {
+        let currentId = element.id
+        $.ajax({
+            url: 'ressources/zplscripts/' + currentId + ".ZPL",
+            success: function (data) {
+                element.innerText = data;
+            }
+        });
 }
