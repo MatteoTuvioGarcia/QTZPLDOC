@@ -61,7 +61,7 @@ function loadZplElement(element) {
                     data.replaceAll("\n", "<br/>") +
                     "            </p>\n" +
                     "        </div>\n" +
-                    "        <a href=\"ressources/zplscripts/" + filename + "\" download>\n" +
+                    "        <a href=\"ressources/zplscripts/" + filename.replaceAll(" ", '') + "\" download>\n" +
                     "            <button type=\"button\" class=\"btn btn-dark\">\n" +
                     "                <span>download as .ZPL</span>\n" +
                     "            </button>\n" +
