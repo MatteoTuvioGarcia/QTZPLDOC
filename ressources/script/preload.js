@@ -1,7 +1,7 @@
 function fctClicked(evt) {
     let replace = document.getElementById(evt.target.id)
     replace.innerHTML = '<iframe width="910" height="607" src="https://www.youtube.com/embed/u5Ho1trvlro?autoplay=1&loop=1&playlist=u5Ho1trvlro" ' +
-        'title="petit poney officiel clip" frameborder="0" ' +
+        'title="petit poney officiel clip" ' +
         'allow="accelerometer; autoplay; clipboard-write; ' +
         'encrypted-media; gyroscope; picture-in-picture; web-share" ' +
         'allowfullscreen></iframe>'
@@ -9,15 +9,16 @@ function fctClicked(evt) {
 
 function loadPage(href) {
 
-    var xmlhttp = new XMLHttpRequest();
+    let xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", href, false);
     xmlhttp.send();
     document.getElementById('mainpage').innerHTML = xmlhttp.responseText;
 
-    clickme = document.getElementById("clickme")
+    let clickme = document.getElementById("clickme")
     if (clickme != null) {
         clickme.addEventListener("click", fctClicked, false)
     }
+    let zplPage;
     zplPage = document.getElementById("zplWrapper");
 
     if (zplPage != null) {
@@ -29,12 +30,10 @@ function loadPage(href) {
 async function loadZplElement(element) {
 
 
-    let zplData;
     let zplPrefix = 'label';
     let zplSuffix = '.ZPL';
     let constructedFileName;
     let I = 1;
-    let stop = false;
     while (I <= 20) {
 
         //needed otherwise javascript is too fast and labels get confusedly fucked up
@@ -44,9 +43,8 @@ async function loadZplElement(element) {
         $.ajax({
             url: 'ressources/zplscripts/' + constructedFileName,
             success:  async function (data) {
-                console.log(data)
                 let count = document.getElementsByClassName("card_custom").length + 1
-                let newLabel = null;
+                let newLabel;
                 newLabel =  document.createElement('div');
                 newLabel.id = count
                 let labelName = data.substring(1, data.search('\n')).substring(18,70)
@@ -54,15 +52,15 @@ async function loadZplElement(element) {
                 data = data.substring(data.search('\n') + 1, data.length)
                 newLabel.innerHTML = "<div class=\"border row rounded card_custom\">\n" +
                     "    <div class=\"bg-dark text-light rounded p-2\">\n" +
-                    "        <h2>Snippet " + count +": "+ labelName +"</h2>\n" +
+                    `        <h2>Snippet ${count}: ${labelName}</h2>\n` +
                     "    </div>\n" +
                     "    <div class=\"bg-light pt-2 card_custom_inside\">\n" +
                     "        <div class=\"zplcode\">\n" +
                     "            <p class=\"zplsourcefile\" id=\"label2\">\n" +
-                    data.replaceAll("\n", "<br/>") +
+                     `${data.replaceAll("\n", "<br/>")}` +
                     "            </p>\n" +
                     "        </div>\n" +
-                    "        <a href=\"ressources/zplscripts/" + filename.replaceAll(" ", '') + "\" download>\n" +
+                    `        <a href="ressources/zplscripts/${filename.replaceAll(" ", '')}" download>\n` +
                     "            <button type=\"button\" class=\"btn btn-dark\">\n" +
                     "                <span>download as .ZPL</span>\n" +
                     "            </button>\n" +
