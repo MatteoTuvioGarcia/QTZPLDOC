@@ -38,7 +38,7 @@ async function loadZplElement(element) {
     while (I <= 20) {
 
         //needed otherwise javascript is too fast and labels get confusedly fucked up
-        await sleep(1);
+        await sleep(10);
 
         constructedFileName = zplPrefix + I + zplSuffix;
         $.ajax({
