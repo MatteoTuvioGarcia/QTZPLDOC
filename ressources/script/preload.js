@@ -15,9 +15,7 @@ function loadPage(href) {
     document.getElementById('mainpage').innerHTML = xmlhttp.responseText;
 
     clickme = document.getElementById("clickme")
-    console.log(clickme)
     if (clickme != null) {
-        console.log('Aded')
         clickme.addEventListener("click", fctClicked, false)
     }
     zplPage = document.getElementById("zplWrapper");
@@ -37,20 +35,17 @@ async function loadZplElement(element) {
     let constructedFileName;
     let I = 1;
     let stop = false;
-    while (I <= 4) {
-
+    while (I <= 20) {
 
         //needed otherwise javascript is too fast and labels get confusedly fucked up
         await sleep(1);
 
         constructedFileName = zplPrefix + I + zplSuffix;
-        console.log(constructedFileName)
         $.ajax({
             url: 'ressources/zplscripts/' + constructedFileName,
             success:  async function (data) {
-
+                console.log(data)
                 let count = document.getElementsByClassName("card_custom").length + 1
-                console.log(count)
                 let newLabel = null;
                 newLabel =  document.createElement('div');
                 newLabel.id = count
@@ -77,8 +72,8 @@ async function loadZplElement(element) {
                 element.append(newLabel)
 
             }
-
-        });
+        }
+        );
         I++;
     }
 
