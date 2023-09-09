@@ -1,4 +1,4 @@
-^XF Label4.ZPL     Testing label 4
+^XF label4.ZPL     Testing label 4
 ^XA
 ^A0,80.80^FO150,50^Fv#VARTICLE_NAME#V^FS
 ^BY5,2,270

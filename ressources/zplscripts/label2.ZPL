@@ -1,4 +1,4 @@
-^XF Label2.ZPL     Article name with barcode
+^XF label2.ZPL     Article name with barcode
 ^XA
 ^A0,80.80^FO150,50^Fv#VARTICLE_NAME#V^FS
 ^BY5,2,270

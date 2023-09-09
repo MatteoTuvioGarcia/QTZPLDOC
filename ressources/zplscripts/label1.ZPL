@@ -1,4 +1,4 @@
-^XF Label1.ZPL     Main title with two subtitles
+^XF label1.ZPL     Main title with two subtitles
 ^XA
 ^CI17^AP,40,40^FO250,50^FV#VLABEL_TITLE#V^FS
 ^CI17^AP,30,30^FO60,110^FV#VLABEL_SUBTITLE_1#V^FS
