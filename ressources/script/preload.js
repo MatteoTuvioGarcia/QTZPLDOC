@@ -28,7 +28,7 @@ function loadPage(href) {
     }
 }
 
-function loadZplElement(element) {
+async function loadZplElement(element) {
 
 
     let zplData;
@@ -39,17 +39,23 @@ function loadZplElement(element) {
     let stop = false;
     while (I <= 4) {
 
+
+        //needed otherwise javascript is too fast and labels get confusedly fucked up
+        await sleep(1);
+
         constructedFileName = zplPrefix + I + zplSuffix;
         console.log(constructedFileName)
         $.ajax({
             url: 'ressources/zplscripts/' + constructedFileName,
-            success: function (data) {
+            success:  async function (data) {
+
                 let count = document.getElementsByClassName("card_custom").length + 1
-                let newLabel = document.createElement('div')
+                console.log(count)
+                let newLabel = null;
+                newLabel =  document.createElement('div');
+                newLabel.id = count
                 let labelName = data.substring(1, data.search('\n')).substring(18,70)
                 let filename = data.substring(1, data.search('\n')).substring(3,18)
-                console.log(filename)
-                console.log(labelName)
                 data = data.substring(data.search('\n') + 1, data.length)
                 newLabel.innerHTML = "<div class=\"border row rounded card_custom\">\n" +
                     "    <div class=\"bg-dark text-light rounded p-2\">\n" +
@@ -69,6 +75,7 @@ function loadZplElement(element) {
                     "    </div>\n" +
                     "</div>"
                 element.append(newLabel)
+
             }
 
         });
@@ -77,6 +84,6 @@ function loadZplElement(element) {
 
 }
 
-function readZpl(id) {
-
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
